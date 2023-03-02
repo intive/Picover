@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.intive.picover.camera.view.CameraScreen
 import com.intive.picover.home.view.HomeScreen
+import com.intive.picover.images.view.ImagesScreen
 import com.intive.picover.profile.view.ProfileScreen
 
 @Composable
@@ -22,13 +23,17 @@ fun PicoverNavHost(
 		startDestination = startDestination
 	) {
 		composable("home") {
-			HomeScreen()
+			val onNavigateToImages = { navController.navigate("images") }
+			HomeScreen(onNavigateToImages)
 		}
 		composable("camera") {
 			CameraScreen(hiltViewModel())
 		}
 		composable("profile") {
 			ProfileScreen()
+		}
+		composable("images") {
+			ImagesScreen(hiltViewModel())
 		}
 	}
 }
