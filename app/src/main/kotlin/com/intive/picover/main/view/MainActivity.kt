@@ -1,7 +1,6 @@
 package com.intive.picover.main.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedVisibility
@@ -12,7 +11,6 @@ import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSiz
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.google.firebase.storage.FirebaseStorage
 import com.intive.picover.main.navigation.model.NavigationItem
 import com.intive.picover.main.navigation.model.NavigationType
 import com.intive.picover.main.navigation.view.PicoverNavigationBar
@@ -26,16 +24,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-
-		val storage = FirebaseStorage.getInstance()
-		val ref = storage.reference
-
-		ref.child("image/spock.jpg").downloadUrl.addOnSuccessListener {
-			Log.i("BUGHUNT", "Image url is: $it }}")
-		}
-
-		Log.i("BUGHUNT", "The storage name: $ref }}")
-
 
 		setContent {
 			PicoverTheme {
